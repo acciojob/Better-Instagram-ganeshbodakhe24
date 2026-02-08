@@ -61,3 +61,10 @@ p {
 button {
   margin: 20px;
 }
+
+.image{
+	height:500px;
+	width:200px;
+	margin:2px;
+	border:1px solid black;
+}
