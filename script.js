@@ -15,6 +15,7 @@ parent.addEventListener("dragover",function(event){
 })
 
 parent.addEventListener("drop",function(event){
+	e.preventDefault();
     parent.replaceChild(child1,child2);
     parent.insertBefore(child2,nextChild);
 })
