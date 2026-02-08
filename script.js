@@ -1,24 +1,25 @@
-let parent=document.getElementById("parent");
-let dragged=null;
-parent.addEventListener("dragstart",function(event){
-    if(e.target && e.target.id.startWith("div")){
-		dragged=e.target;
-	}
-})
+const drags = document.querySelectorAll('[id^="drag"]');
+const divs = document.querySelectorAll('[id^="div"]');
 
-parent.addEventListener("dragover",function(event){
-    event.preventDefault();
-})
+let draggedItem = null;
 
-parent.addEventListener("drop",function(event){
-	event.preventDefault(); 
-   const target=e.target;
-   if(target && target !==dragged && target.id &&target.id.startWith("div") ){
-	  const draggedNext = dragged.nextElementSibling;
-      const targetNext = target.nextElementSibling;
-      const parentNode = dragged.parentNode;
+drags.forEach((drag) => {
+  drag.addEventListener("dragstart", () => {
+    draggedItem = drag;
+  });
+});
 
-      parentNode.insertBefore(dragged, targetNext);
-      parentNode.insertBefore(target, draggedNext);
-   }
-})
+divs.forEach((div) => {
+  div.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+
+  div.addEventListener("drop", (e) => {
+    const existing = div.querySelector('[id^="drag"]');
+
+    if (existing) {
+      draggedItem.parentNode.appendChild(existing);
+    }
+    div.appendChild(draggedItem);
+  });
+});
