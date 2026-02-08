@@ -16,9 +16,9 @@ parent.addEventListener("drop",function(event){
    if(target && target !==dragged && target.id &&target.id.startWith("div") ){
 	  const draggedNext = dragged.nextElementSibling;
       const targetNext = target.nextElementSibling;
-       const parentNode = dragged.parentNode;
+      const parentNode = dragged.parentNode;
 
-       parentNode.insertBefore(dragged, targetNext);
-       parentNode.insertBefore(target, draggedNext);
+      parentNode.insertBefore(dragged, targetNext);
+      parentNode.insertBefore(target, draggedNext);
    }
 })
